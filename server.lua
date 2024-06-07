@@ -424,3 +424,5 @@ lib.callback.register('zf-groups:server:syncEntity', function(source, netId, dat
     local group = Groups[GetGroupId(source)]
     return group:SyncEntity(netId, data)
 end)
+
+lib.versionCheck('zf-labo/zf-groups')
