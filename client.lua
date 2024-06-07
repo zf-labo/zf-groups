@@ -285,9 +285,9 @@ end
 function MyGroup:SetBlip(data)
     if MyGroup.blip then RemoveBlip(MyGroup.blip) end
     MyGroup.blip = AddBlipForCoord(data.coords[1], data.coords[2], data.coords[3])
-    SetBlipSprite(MyGroup.blip, data.sprite)
-    SetBlipDisplay(MyGroup.blip, 4)
-    SetBlipScale(MyGroup.blip, 0.8)
+    SetBlipSprite(MyGroup.blip, data.sprite or 1)
+    SetBlipDisplay(MyGroup.blip, data.display or 4)
+    SetBlipScale(MyGroup.blip, data.scale or 0.8)
     SetBlipColour(MyGroup.blip, data.color)
     SetBlipAsShortRange(MyGroup.blip, true)
     BeginTextCommandSetBlipName('STRING')

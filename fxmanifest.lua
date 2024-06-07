@@ -4,7 +4,7 @@ lua54 'yes'
 
 author 'LeZach & ZF Labo'
 description 'Group system for FiveM'
-version '1.0.0'
+version '1.0.1'
 
 client_script 'client.lua'
 server_script 'server.lua'

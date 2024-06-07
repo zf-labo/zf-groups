@@ -282,7 +282,6 @@ end
 ---@return table|boolean Group
 function GetGroupId(identifier)
     if type(identifier) == 'number' then identifier = Bridge.GetIdentifier(identifier) end
-
     if not Groups then return false end
     for _,group in pairs(Groups) do
         if group.members[identifier] then
@@ -290,15 +289,107 @@ function GetGroupId(identifier)
         end
     end
     return false
-end exports('GetGroupId', GetGroupId)
+end
 
----Gives the number of people inside a group
----@param groupId number
----@return number Size
-function GetGroupSize(groupId)
+exports('getMembers', function(groupId, isSource)
+    if isSource then groupId = GetGroupId(groupId) end
+    return Groups[groupId]:GetMembers()
+end)
+
+exports('getSize', function(groupId, isSource)
+    if isSource then groupId = GetGroupId(groupId) end
     return Groups[groupId]:GetSize()
-end exports('getGroupSize', GetGroupSize)
+end)
 
+exports('getLeader', function(groupId, isSource)
+    if isSource then groupId = GetGroupId(groupId) end
+    return Groups[groupId]:GetLeader()
+end)
+
+exports('destroyGroup', function(groupId, isSource)
+    if isSource then groupId = GetGroupId(groupId) end
+    return Groups[groupId]:Destroy()
+end)
+
+exports('isLeader', function(groupId, identifier, isSource)
+    if isSource then groupId = GetGroupId(groupId) end
+    return Groups[groupId]:IsLeader(identifier)
+end)
+
+exports('notifyGroup', function(groupId, data, isSource)
+    if isSource then groupId = GetGroupId(groupId) end
+    return Groups[groupId]:Notify(data)
+end)
+
+exports('leaveGroup', function(groupId, identifier, isSource)
+    if isSource then groupId = GetGroupId(groupId) end
+    return Groups[groupId]:Leave(identifier)
+end)
+
+exports('updateMembers', function(groupId, isSource)
+    if isSource then groupId = GetGroupId(groupId) end
+    return Groups[groupId]:UpdateMembers()
+end)
+
+exports('addTask', function(groupId, task, isSource)
+    if isSource then groupId = GetGroupId(groupId) end
+    return Groups[groupId]:AddTask(task)
+end)
+
+exports('removeTask', function(groupId, taskId, isSource)
+    if isSource then groupId = GetGroupId(groupId) end
+    return Groups[groupId]:RemoveTask(taskId)
+end)
+
+exports('completeTask', function(groupId, isSource)
+    if isSource then groupId = GetGroupId(groupId) end
+    return Groups[groupId]:CompleteTask()
+end)
+
+exports('nextStep', function(groupId, isSource)
+    if isSource then groupId = GetGroupId(groupId) end
+    return Groups[groupId]:NextStep()
+end)
+
+exports('updateTasks', function(groupId, tasks, isSource)
+    if isSource then groupId = GetGroupId(groupId) end
+    return Groups[groupId]:UpdateTasks(tasks)
+end)
+
+exports('getTasks', function(groupId, isSource)
+    if isSource then groupId = GetGroupId(groupId) end
+    return Groups[groupId]:GetTasks()
+end)
+
+exports('setJob', function(groupId, job, label, isSource)
+    if isSource then groupId = GetGroupId(groupId) end
+    return Groups[groupId]:SetJob(job, label)
+end)
+
+exports('leaveJob', function(groupId, isSource)
+    if isSource then groupId = GetGroupId(groupId) end
+    return Groups[groupId]:LeaveJob()
+end)
+
+exports('resetJobData', function(groupId, isSource)
+    if isSource then groupId = GetGroupId(groupId) end
+    return Groups[groupId]:ResetJobData()
+end)
+
+exports('syncEntity', function(groupId, netId, data, isSource)
+    if isSource then groupId = GetGroupId(groupId) end
+    return Groups[groupId]:SyncEntity(netId, data)
+end)
+
+exports('setBlip', function(groupId, data, isSource)
+    if isSource then groupId = GetGroupId(groupId) end
+    return Groups[groupId]:SetBlip(data)
+end)
+
+exports('removeBlip', function(groupId, isSource)
+    if isSource then groupId = GetGroupId(groupId) end
+    return Groups[groupId]:RemoveBlip()
+end)
 
 
 
