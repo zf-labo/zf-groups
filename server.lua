@@ -1,3 +1,6 @@
+local Bridge = require 'bridge.server'
+lib.locale()
+
 Groups = {}
 local JobQueue = {}
 

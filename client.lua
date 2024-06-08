@@ -1,3 +1,5 @@
+lib.locale()
+
 -- ## CLASS ##
 
 ---@class MyGroup : OxClass
