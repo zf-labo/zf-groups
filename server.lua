@@ -283,7 +283,7 @@ end
 ---Gives the groupId of a player using it's source or citizenid
 ---@param identifier number|string
 ---@return table|boolean Group
-local function getGroupId(identifier)
+local function GetGroupId(identifier)
     if type(identifier) == 'number' then identifier = Bridge.GetIdentifier(identifier) end
     if not Groups then return false end
     for _,group in pairs(Groups) do
@@ -293,7 +293,7 @@ local function getGroupId(identifier)
     end
     return false
 end
-exports('getGroupId', getGroupId)
+exports('getGroupId', GetGroupId)
 
 exports('getMembers', function(groupId, isSource)
     if isSource then groupId = GetGroupId(groupId) end
